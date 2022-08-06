@@ -1,3 +1,4 @@
+
 let translateToFrench = ()=>{
     textToTranslate = document.getElementById("textToTranslate").value;
 
