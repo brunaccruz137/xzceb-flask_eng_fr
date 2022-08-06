@@ -1,5 +1,5 @@
 """
-Imports
+Load required packages
 """
 import os
 from ibm_watson import LanguageTranslatorV3
@@ -11,14 +11,15 @@ load_dotenv()
 apikey = os.environ['apikey']
 url = os.environ['url']
 
+# Prepare the Authenticator
 authenticator = IAMAuthenticator(apikey)
 language_translator = LanguageTranslatorV3(version='2018-05-01',authenticator=authenticator)
 language_translator.set_service_url(url)
 
-
+# Function to translate English to French
 def english_to_french(english_text):
     """
-    Function to translate English to French
+    Input language translate function
     """
     if not english_text:
         return ''
@@ -26,10 +27,11 @@ def english_to_french(english_text):
     translation = translation_response.get_result()
     french_text = translation['translations'][0]['translation']
     return french_text
-
+    
+# Function to translate English to French
 def french_to_english(french_text):
     """
-    Function to translate French to English
+    Input language translate function
     """
     if not french_text:
         return ''
@@ -37,4 +39,5 @@ def french_to_english(french_text):
     translation = translation_response.get_result()
     english_text = translation['translations'][0]['translation']
     return english_text
+    
     
